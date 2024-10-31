@@ -151,7 +151,7 @@ p <- ggplot() +
         plot.caption = element_text(size = 20, family = "roboto", color = "grey30"))
 
 # Save plit
-ggsave(filename = "01-point-meteorite-landings-germany.png",
+ggsave(filename = "01-points-meteorite-landings-germany.png",
        plot = p, 
        path = "output",
        dpi = 300,
