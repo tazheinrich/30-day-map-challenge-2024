@@ -64,11 +64,11 @@ df_meteorite_labels <- bind_rows(
                                         "<b>Location:</b> ", name, "<br>", 
                                         "<b>Found:</b> ", year, "<br>",
                                         "<b>Weight:</b> ", comma(mass_g), "g")),
-  tmp_oldest %>% mutate(label = paste("<b>Oldest Meteorite</b><br><br>", 
+  tmp_oldest %>% mutate(label = paste("<b>Least recently fould Meteorite</b><br><br>", 
                                       "<b>Location:</b> ", name, "<br>",
                                       "<b>Found:</b> ", year, "<br>", 
                                       "<b>Weight:</b> ", comma(mass_g), "g")),
-  tmp_youngest %>% mutate(label = paste("<b>Youngest Meteorite</b><br><br>", 
+  tmp_youngest %>% mutate(label = paste("<b>Most recently found Meteorite</b><br><br>", 
                                         "<b>Location:</b> ", name, "<br>",
                                         "<b>Found:</b> ", year, "<br>",
                                         "<b>Weight:</b> ", comma(mass_g), "g"))
