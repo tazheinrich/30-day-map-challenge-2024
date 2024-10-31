@@ -131,7 +131,7 @@ p <- ggplot() +
            ylim = c(st_bbox(shp_ger)[2] - y_buffer, st_bbox(shp_ger)[4] + y_buffer)) +
   labs(title = "Meteorite Landings in Germany",
        subtitle = "by Tassilo Heinrich | Code at github.com/tazheinrich",
-       caption= "Data: Eurostat, Nasa",
+       caption= "Data: Eurostat- GISCO, The Meteoritical Society/NASA",
        x = NULL, 
        y = NULL) +   
   theme_minimal(base_family = "roboto",
