@@ -89,7 +89,6 @@ df_meteorite_labels <- df_meteorite_labels %>%
 x_buffer <- 2 # Adjust as necessary
 y_buffer <- 0  # Adjust as necessary
 
-
 # Plot shapefile
 p <- ggplot() +
   geom_sf(data = shp_ger,
@@ -155,6 +154,6 @@ ggsave(filename = "01-points-meteorite-landings-germany.png",
        plot = p, 
        path = "output",
        dpi = 300,
-       width = 5,
-       height = 5/7 * 10,
-       scale = 7/5)
+       width = 8,
+       height = 10,
+       scale = 1)
