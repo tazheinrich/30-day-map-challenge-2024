@@ -154,7 +154,6 @@ p <- ggplot() +
 ggsave(filename = "01-points-meteorite-landings-germany.png",
        plot = p, 
        path = "output",
-       dpi = 300,
        width = 5,
        height = 5/7 * 10,
        scale = 7/5)
