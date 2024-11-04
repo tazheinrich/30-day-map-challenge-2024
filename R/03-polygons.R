@@ -59,7 +59,6 @@ p <- ggplot() +
   labs(title = "Parks vs. Buildings in Munich",
        subtitle = "by Tassilo Heinrich | Code at github.com/tazheinrich",
        caption = "Data: OpenStreetMap") +
-  theme_minimal() +
   theme_minimal(base_size = 20) +
   theme(
     panel.grid.major = element_blank(),  
