@@ -1,6 +1,9 @@
 # Load packages
 librarian::shelf(osmdata, rnaturalearth, rnaturalearthdata, rvest, sf, tidygeocoder, tidyverse)
 
+# Define seed
+set.seed(42)
+
 # Define url
 url <- "https://en.wikipedia.org/wiki/2024_ATP_Tour"
 
@@ -95,12 +98,15 @@ tournament_calendar <- tournament_calendar %>%
           timeout = 420) %>% 
   # For some weird reason I don't get coordinates for Eastbourne
   mutate(latitude = if_else(is.na(latitude) & city == "Eastbourne" & country == "Great Britain", 50.768, latitude),
-         longitude = if_else(is.na(longitude) & city == "Eastbourne" & country == "Great Britain", 0.284, longitude))
+         longitude = if_else(is.na(longitude) & city == "Eastbourne" & country == "Great Britain", 0.284, longitude)) 
 
 # Convert data to sf object
 tournament_calendar_sf <- tournament_calendar %>% 
   st_as_sf(coords = c("longitude", "latitude"), crs = 4326) %>% 
   st_transform(crs = 3395)
+
+# Add jitter
+tournament_calendar_sf <- st_jitter(tournament_calendar_sf, amount = 15000)
 
 # Arrage the data by start_data
 tournament_calendar_sf <- tournament_calendar_sf %>% 
