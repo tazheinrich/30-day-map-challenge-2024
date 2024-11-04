@@ -1,5 +1,5 @@
 # Load packages
-librarian::shelf(osmdata, rnaturalearthdata, rvest, sf, tidygeocoder, tidyverse)
+librarian::shelf(osmdata, rnaturalearth, rnaturalearthdata, rvest, sf, tidygeocoder, tidyverse)
 
 # Define url
 url <- "https://en.wikipedia.org/wiki/2024_ATP_Tour"
@@ -99,7 +99,8 @@ tournament_calendar <- tournament_calendar %>%
 
 # Convert data to sf object
 tournament_calendar_sf <- tournament_calendar %>% 
-  st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
+  st_as_sf(coords = c("longitude", "latitude"), crs = 4326) %>% 
+  st_transform(crs = 3395)
 
 # Arrage the data by start_data
 tournament_calendar_sf <- tournament_calendar_sf %>% 
@@ -151,7 +152,8 @@ event_lines_df <- event_lines %>%
     yend = last(Y)
   )
 
-world <- ne_countries(scale = "medium", returnclass = "sf") %>% 
+# Gett world map
+world <- ne_countries(scale = 50, returnclass = "sf") %>% 
   filter(name != "Antarctica")
 
 
@@ -215,7 +217,7 @@ p <- ggplot() +
     plot.caption = element_text(color = "black", family = "roboto"),
     plot.margin = margin(10, 10, 10, 10)  # Reduce margins
   ) +
-  coord_sf(expand = FALSE)  # Use all available space
+  coord_sf(crs = st_crs(3395), expand = TRUE) 
 
 
 # Save plot
@@ -224,5 +226,5 @@ ggsave(filename = "05-journey-roads-to-atp-finals-2024.png",
        path = "output",
        dpi = 300,
        width = 16,
-       height = 9,
+       height = 16,
        scale = 1)  
