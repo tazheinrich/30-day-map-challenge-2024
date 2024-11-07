@@ -194,7 +194,7 @@ p <- ggplot() +
   scale_color_manual(values = border_color_mapping) +
   scale_fill_manual(values = fill_color_mapping) + 
   guides(color = "none",
-         fill = guide_legend(override.aes = list(size = 4,
+         fill = guide_legend(override.aes = list(linewidth = 4,
                                                  color = border_color_mapping,
                                                  fill = fill_color_mapping),
                              title.position = "top",
