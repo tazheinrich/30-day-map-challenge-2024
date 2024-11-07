@@ -1,8 +1,12 @@
 # Load packages
-librarian::shelf(osmdata, rnaturalearth, rnaturalearthdata, rvest, sf, tidygeocoder, tidyverse)
+librarian::shelf(osmdata, rnaturalearth, rnaturalearthdata, rvest, showtext, sf, tidygeocoder, tidyverse)
 
 # Define seed
 set.seed(42)
+
+# Make fonts available
+showtext::showtext_auto()
+font_add_google("Roboto", "roboto")
 
 # Define url
 url <- "https://en.wikipedia.org/wiki/2024_ATP_Tour"
